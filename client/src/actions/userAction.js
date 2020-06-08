@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from '../config/axios'
 //import Swal  from 'sweetalert2'
 
 export const setUser = (users) => {
@@ -14,7 +14,7 @@ return {type : "REMOVE_USER"}
 
 export const startLoginUser = (formData, redirect) => {
 return (dispatch) => {
-    axios.post('http://localhost:3099/users/login', formData)
+    axios.post('/users/login', formData)
         .then(response => {
             console.log(response)
             if(response.data.hasOwnProperty('errors')){

@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from '../config/axios'
 
 export const setCoachers=(coachers)=>{
     return{
@@ -9,7 +9,7 @@ export const setCoachers=(coachers)=>{
 
 export const startGetCoachers=()=>{
     return(dispatch)=>{
-        axios.get('http://localhost:3099/coachers',{
+        axios.get('/coachers',{
             headers:{'x-auth':localStorage.getItem('authToken')}
         })
         .then(response=>{

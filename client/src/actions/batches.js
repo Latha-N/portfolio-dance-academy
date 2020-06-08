@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from '../config/axios'
 
 export const setBatches=(batches)=>{
     return{
@@ -9,7 +9,7 @@ export const setBatches=(batches)=>{
 
 export const startGetBatches=()=>{
     return(dispatch)=>{
-        axios.get('http://localhost:3099/batches',{
+        axios.get('/batches',{
             headers:{'x-auth':localStorage.getItem('authToken')}
         })
         .then(response=>{

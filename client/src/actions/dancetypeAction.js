@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from '../config/axios'
 import Swal from 'sweetalert2'
 
 
@@ -11,7 +11,7 @@ export const setDanceforms=(danceforms)=>{
 
 export const startGetDanceforms=()=>{
     return (dispatch)=>{
-        axios.get('http://localhost:3099/dancetypes',{
+        axios.get('/dancetypes',{
             headers:{'x-auth':localStorage.getItem('authToken')}
         })
         .then(response=>{
