@@ -25,8 +25,7 @@ class Register extends React.Component{
             password:'',
             username:'',
             mobile:'',
-            role:'',
-            role:['admin','user']
+            
         }
     }
     
@@ -45,11 +44,11 @@ class Register extends React.Component{
             password : this.state.password,
             username : this.state.username,
             mobile : this.state.mobile,
-            role:this.state.role
+            
         }
         const redirect = () => this.props.history.push('/users/login')
         this.props.dispatch(startRegisterUser(formData, redirect))
-        console.log(formData)
+        //console.log(formData)
         
     }
 
@@ -95,7 +94,7 @@ class Register extends React.Component{
       <MDBInput label="Enter Password" type="password" name = "password" value = {this.state.password} onChange = {this.handleChange} />
   <br/>
 
-<div>
+{/* <div>
 <ul>
   {
     this.state.role.map(rl=>{
@@ -105,7 +104,7 @@ class Register extends React.Component{
   }
   </ul>
   
-</div>
+</div> */}
 {/* <div class="custom-control custom-radio">
 <ul>
   {
@@ -150,7 +149,7 @@ class Register extends React.Component{
 }
 
 const mapStateToProps=(state,props)=>{
-  console.log('users//////',props)
+ // console.log('users//////',props)
       return{
           user:state.user
       }

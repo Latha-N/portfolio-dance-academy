@@ -11,7 +11,7 @@ const imageStyle = {
 
 class Home extends React.Component{
     render(){
-        console.log('localStorage',localStorage.getItem('authToken'))
+        //console.log('localStorage',localStorage.getItem('authToken'))
         return(
             <div style={imageStyle}>
                 <h1>welcom to DANCE ACADEMY</h1>

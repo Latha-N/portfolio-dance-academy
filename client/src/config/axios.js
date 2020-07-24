@@ -1,7 +1,7 @@
 import Axios from 'axios'
-const URL = window.location.origin.includes('localhost') ? "http://localhost:3099" : "/"
+// const URL = window.location.origin.includes('localhost') ? "http://localhost:3099" : "/"
 
 const axios=Axios.create({
-    baseURL: URL
+    baseURL: '/'
 })
 export default axios

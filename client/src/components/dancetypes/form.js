@@ -23,7 +23,7 @@ class DanceForm extends React.Component{
         }
 
      handleFileChange=(e)=>{
-         console.log('danceimage',e.target.files[0])
+         //console.log('danceimage',e.target.files[0])
          this.setState({
              danceImage:e.target.files[0]
          })

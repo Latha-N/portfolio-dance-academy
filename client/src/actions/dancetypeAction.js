@@ -1,126 +1,92 @@
 import axios from '../config/axios'
-import Swal from 'sweetalert2'
 
-
-export const setDanceforms=(danceforms)=>{
-    return {
-        type:"SET_DANCEFORMS",
-        payload:danceforms
+export const setDancetypes=(dancetypes)=>{
+    return{
+        type:"SET_DANCERS",
+        payload:dancetypes
     }
 }
 
-export const startGetDanceforms=()=>{
-    return (dispatch)=>{
-        axios.get('/dancetypes',{
+
+
+export const startGetDancetypes=()=>{
+    return(dispatch)=>{
+        axios.get(`/dancetypes`,{
             headers:{'x-auth':localStorage.getItem('authToken')}
         })
         .then(response=>{
-            console.log('dance forms...',response.data)
+            //console.log('listing',response.data)
             if(response.data.message){
-                alert(response.data.message)
+                console.log(response.data.message)
             }else{
-                dispatch(setDanceforms(response.data))
+                dispatch(setDancetypes(response.data))
             }
         })
-        .catch(err=>{
-            alert(err)
-        })
-    }
-}
-
-// export const adddanceforms = (danceforms) => {
-//     return {
-//         type : 'ADD_DANCE',
-//         payload : danceforms
-//     }
-// }
-
-// export const startAddDance = (formData) => {
-//     return (dispatch) => {
-//         axios.post('http://localhost:3088/danceforms', formData, {
-//             headers : {'x-auth' : localStorage.getItem('authToken')}
-//         })
-//             .then(response => {
-//                 if(response.data.errors){
-//                     alert(response.data.message)
-//                 } else {
-//                     dispatch(adddanceforms(response.data))
-//                 }
-//                 // const danceforms=response.data
-//                 // dispatch(adddanceforms(danceforms))
-//                 // history.pushState('/home')
-//             })
-
-//     }
-// }
-
-const addDance=(dance)=>{
-    return {type:"ADD_DANCE",payload:dance}
-}
-
-export const startAddDance = (formData, redirect) => {
-    return (dispatch) => {
-        axios.post('http://localhost:3099/dancetypes/new', formData,{
-        headers : {'x-auth' : localStorage.getItem('authToken')}
-            })
-                .then(response => {
-                    if(response.data.hasOwnProperty('errors')){
-                        Swal.fire('Ooops!!','there was an error submitting the form')
- 
-                    }else{
-                        const dance= response.data
-                console.log('dance.............',dance)
-                dispatch(addDance(dance))
-                redirect()
-
-                //history.push('/home')
-                    }
-                    Swal.fire('Good job','succesfully added department','success')
-                    })
-            .catch(err => {
-                console.log(' err', err)
-            })
     }
 }
 
 
-export const removeDance = (id) => {
-    return {
-        type : "REMOVE_DANCE",
-        payload : id
+export const removeDance=(id)=>{
+    return{
+        type:'REMOVE_DANCE',
+        payload:id
     }
 }
 
-export const startRemoveDance = (id) => {
-    return (dispatch) => {
-        axios.delete(`http://localhost:3099/dancetypes/${id}`, {
+export const startRemovedance = (id) => {
+    return dispatch => {
+        axios.delete(`/dancetypes/${id}`, {
             headers : {
-                'x-auth' : localStorage.getItem('authToken')}
+                'x-auth' : localStorage.getItem('authToken'),
+            }
         })
         .then(response => {
+            //const id=response.data._id
+        
             dispatch(removeDance(id,response.data))
-             })
-    }
-}
-
-const editdance = (dance) => {
-    return {type: 'EDIT_DANCE', payload: dance} 
-}
-
-
-export const startEditDance = (id, formData,redirect) => {
-    return (dispatch) => {
-        axios.put(`http://localhost:3099/dancetypes/edit/${id}`, formData,{
-            headers : {
-                'x-auth' : localStorage.getItem('authToken')}
         })
-            .then(response=>{
-                const dance = response.data
-                //const id = dance._id
-                dispatch(editdance(dance))
-                redirect()
-            })
+    }
+}
+
+export const addDance=(dance)=>{
+    return {
+        type:'ADD_DANCE',
+        payload:dance
+    }
+}
+
+export const startAdddance=(formData,redirect)=>{
+    return(dispatch)=>{
+        axios.post('/dancetypes/new',formData,{
+            headers:{'x-auth':localStorage.getItem('authToken')}
+        })
+        .then(response=>{
+            dispatch(addDance(response.data))
+            redirect()
+        })
     }
 }
 
 
+const editDance=(dance)=>{
+    return {
+        type:"EDIT_DANCE",
+        payload:dance
+    }
+}
+
+
+export const startEditDance=(id,formData,redirect)=>{
+    return (dispatch)=>{
+        axios.put(`/edit/${id}`,formData,{
+            headers:{
+                'x-auth':localStorage.getItem('authToken')
+            }
+        })
+        .then(response=>{
+            const dance=response.data
+            dispatch(editDance(dance))
+            redirect()
+        })
+    }
+}

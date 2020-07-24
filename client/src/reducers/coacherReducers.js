@@ -6,7 +6,7 @@ const coacherReducer=(state=coacherInitialState,action)=>{
             return [...action.payload]
         }
         case 'ADD_COACHERS':{
-            return [...state,action.payload]
+            return [...state]
         }
         case 'REMOVE_COACHER':{
             return state.filter(coacher=>coacher._id!==action.payload)

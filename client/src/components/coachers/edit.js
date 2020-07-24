@@ -4,11 +4,12 @@ import CoacherForm from './form'
 import { startEditCoach } from '../../actions/coachersAction'
 //import {withRouter} from 'react-router-dom'
 function CoacherEdit(props){
-    console.log("found id  is",props)
-    const handleSubmit=(form)=>{
-        const id=props.match.params.id
+    const id=props.match.params.id
+    //console.log("found id  is",props)
+    const handleSubmit=(formData)=>{
+        const id=props.id
         const redirect=()=>props.history.push("/coachers")
-        props.dispatch(startEditCoach(id,form,redirect))
+        props.dispatch(startEditCoach(id,formData,redirect))
     }
    
     return(

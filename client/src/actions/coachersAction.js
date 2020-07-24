@@ -13,7 +13,6 @@ export const startGetCoachers=()=>{
             headers:{'x-auth':localStorage.getItem('authToken')}
         })
         .then(response=>{
-            console.log('coachers....',response.data)
             if(response.data.message){
                 alert(response.data.message)
             }else{
@@ -34,21 +33,23 @@ export const addCoacher=(coacher)=>{
 
 export const startAddCoachers=(formData,redirect)=>{
     return (dispatch)=>{
-        axios.post('http://localhost:3099/coachers/new',formData,{
+        axios.post('/coachers/new',formData,{
             headers:{'x-auth':localStorage.getItem('authToken')}
         })
         .then(response=>{
-            if(response.data.errors){
-                alert(response.data.message)
-            }else{
-            const coacher=response.data
-            dispatch(addCoacher(coacher))
+            // if(response.data.errors){
+            //     alert(response.data.message)
+            // }else{
+            // const coacher=response.data
+            // dispatch(addCoacher(coacher))
+            // redirect()
+            // }
+            dispatch(addCoacher(response.data))
             redirect()
-            }
             })
-        .catch(err=>{
-            console.log('err',err)
-        })
+        // .catch(err=>{
+        //     console.log('err',err)
+        // })
     }
 }
 
@@ -61,7 +62,7 @@ export const removeCoacher=(id)=>{
 
 export const startRemovecoacher=(id)=>{
     return(dispatch)=>{
-        axios.delete(`http://localhost:3099/coachers/${id}`,{
+        axios.delete(`/coachers/${id}`,{
             headers:{
                 'x-auth':localStorage.getItem('authToken')
             }
@@ -78,7 +79,7 @@ export const editCoacher=(coacher)=>{
 
 export const startEditCoach=(id,formData,redirect)=>{
     return (dispatch)=>{
-        axios.put(`http:/localhost:3099/coachers/edit/${id}`,formData,{
+        axios.put(`/coachers/edit/${id}`,formData,{
             headers:{
                 'x-auth':localStorage.getItem('authToken')
             }

@@ -17,8 +17,9 @@ export const startGetBatches=()=>{
                 alert(response.data.message)
             }else{
                 dispatch(setBatches(response.data))
-                console.log('khvkjvlj..........',response.data)
+                //console.log('khvkjvlj..........',response.data)
             }
         })
     }
 }
+

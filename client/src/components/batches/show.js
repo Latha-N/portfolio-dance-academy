@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 
 function BatchShow(props){
-    console.log('ggggggggg',props.batches)
+    //console.log('ggggggggg',props.batches)
     return(
         <div className="container">
             <h3>Batches</h3>

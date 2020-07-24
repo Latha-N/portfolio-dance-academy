@@ -2,12 +2,12 @@ import React from 'react'
 import DanceForm from '../dancetypes/form'
 
 import {connect} from 'react-redux'
-import { startAddDance } from '../../actions/dancetypeAction'
+import { startAdddance } from '../../actions/dancetypeAction'
 
-class New extends React.Component{
+class DanceAdd extends React.Component{
     handleSubmit=(dance)=>{
         const redirect=()=>this.props.history.push("/dancetypes")
-        this.props.dispatch(startAddDance(dance,redirect))
+        this.props.dispatch(startAdddance(dance,redirect))
     }
     render(){
         return(
@@ -18,4 +18,4 @@ class New extends React.Component{
         )
     }
 }
-export default connect()(New)
+export default connect()(DanceAdd)

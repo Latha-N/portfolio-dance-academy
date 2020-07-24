@@ -3,15 +3,34 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 
-function BatchList(props){
-    console.log('ggggggggg',props.batches)
-    return(
-        <div className="container">
-            <h3>Batches</h3>
+
+class BatchList extends React.Component{
+    constructor(){
+        super()
+        this.state={
+            formdata:localStorage.getItem('formData') ? JSON.parse(localStorage.getItem('formData')) : {},
+            listOn:false,
+            list:localStorage.getItem('formData') ? JSON.parse(localStorage.getItem('formData')) : {}
+        }
+    }
+
+    listClick = e =>{
+        e.preventDefault()
+        this.setState({
+            list : localStorage.getItem('formData') ? JSON.parse(localStorage.getItem('formData')) : {},
+            listOn: true
+        })
+    }
+    render(){
+        const formdata=this.state.formdata
+        console.log('register list',formdata)
+        return(
+            <div className="container">
+            <h3>Available Batches</h3>
             
             
             {
-                props.batches.map((ele)=>
+                this.props.batches.map((ele)=>
                 <div>
                 <ul>
                     {ele.batch.map((sub)=>
@@ -23,40 +42,20 @@ function BatchList(props){
                 )
             }
             
-         </div>
-    )}
-    //     <div className="container">
-    //         <table className = "table table-striped">
-    //                 <thead className="thead-red">
-    //                     <tr>
-    //                         <th>batches</th>
-    //                         <th>Timing</th>
-    //                     </tr>
-    //                 </thead>
-    //                 <tbody>
-                       
-    //                 {
-    //                     props.batches.map(ele=>
-    //                          <div>
-    //                         {
-    //                                 ele.batch.map(sub=>
-    //                                     <tr>
-    //                                         <td>{sub.name}</td>
-                                    
-    //                                     </tr>
-    //                                 )
-    //                             }
-    //                     </div>
-                            
-    //                     )
-    //                 }
-    //                 </tbody>
-    //             </table>
+            <button onClick={this.listClick} style={{color:"blue"}}> Registered List</button><br></br><br></br>
+
+            {
+                this.state.listOn && Object.keys(formdata).map((li,index)=>{
+                return <div key={index}>{li}</div>
+                })
+            }
+
+    </div>
+            
+        )
+    }
+}
     
-    //     </div>
-    // )}
-
-
 const mapStateToProps=(state)=>{
     return{
         batches:state.batches

@@ -1,6 +1,7 @@
 const Coacher=require('../models/coacher')
 
 module.exports.list=(req,res)=>{
+    
     Coacher.find()
     .then(coachers=>{
         res.json(coachers)

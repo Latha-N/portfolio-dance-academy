@@ -23,7 +23,7 @@ function CoacherShow(props){
 }
 
 const mapStateToProps=(state,props)=>{
-    console.log('show..........',state)
+    //console.log('show..........',state)
     return{
         coacher:state.coachers.find(coacher=>coacher._id==props.match.params.id)
     }

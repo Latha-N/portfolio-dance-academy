@@ -5,12 +5,12 @@ import { startEditDance } from '../../actions/dancetypeAction'
 
 function DanceEdit(props){
     const id=props.match.params.id
-    console.log("founf id  is",id)
-    const handleSubmit=(form)=>{
-        console.log("edit form data",form)
+   //console.log("founf id  is",id)
+    const handleSubmit=(formData)=>{
+       //console.log("edit form data",form)
         const id=props.id
-        const redirect=()=>this.props.history.push("/dancetypes")
-        props.dispatch(startEditDance(id,form,redirect))
+        const redirect=()=>this.props.history.push('/dancetypes')
+        props.dispatch(startEditDance(id,formData,redirect))
     }
    
     return(
