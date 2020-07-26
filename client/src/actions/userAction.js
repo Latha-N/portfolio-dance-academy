@@ -1,10 +1,10 @@
 import axios from '../config/axios'
 //import Swal  from 'sweetalert2'
 
-export const setUser = (users) => {
+export const setUser = (user) => {
 return {
     type : "SET_USERS",
-    payload : users
+    payload : user
 }
 }
 

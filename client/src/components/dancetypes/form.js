@@ -12,7 +12,7 @@ class DanceForm extends React.Component{
         this.state={
             dancestyle:this.props.dancestyle ? this.props.dancestyle : '',
             description:this.props.description ? this.props.description : '',
-            danceImage:null
+            danceImage:this.props.danceImage ? this.props.danceImage : ""
         }
     }
 
@@ -36,7 +36,7 @@ class DanceForm extends React.Component{
                 description:this.state.description,
                 //danceImage:this.state.danceImage
             }
-            console.log("getting two data",formData,this.state.danceImage)
+            // console.log("getting two data",formData,this.state.danceImage)
             const form=new FormData()
             form.append('danceImage',this.state.danceImage)
             for (let key in formData){
@@ -44,7 +44,7 @@ class DanceForm extends React.Component{
             }
 
             
-            console.log("in form data",form)
+            // console.log("in form data",form)
             this.props.handleSubmit(form)
      }
     
@@ -64,7 +64,7 @@ class DanceForm extends React.Component{
                 </FormGroup>
                 <FormGroup>
                     <Label for="danceImage">File</Label>
-                    <Input type="file" onChange={this.handleFileChange} defaultValue={this.state.danceImage} encType="multipart/form-data"/>
+                    <Input type="file" onChange={this.handleFileChange} encType="multipart/form-data"/>
                     <FormText color="muted">select the file</FormText>
                     </FormGroup>
                     <Button>Submit</Button>

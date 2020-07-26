@@ -3,7 +3,7 @@ const DanceType=require('../models/dancetypes')
 
 module.exports.list=(req,res)=>{
     //const id=req.user._id
-console.log('listing dance',req.user._id)
+// console.log('listing dance',req.user._id)
     DanceType.find()
     .then(dancetypes=>{
         res.json(dancetypes)
@@ -61,11 +61,17 @@ module.exports.show=(req,res)=>{
 module.exports.update = (req, res) => {
     const id = req.params.id
     const body = req.body
-    // if(req.file) {
-    //     const file = req.file
-    //     body.danceImage = `${file.destination}/${file.filename}`
-    // }
-    body.danceImage=req.file.path
+    if(req.file) {
+        body.danceImage = req.file.path
+    }else{
+        DanceType.findOne({_id:id,user:req.user._id})
+        .then(dancetype=>{
+            if(dancetype.danceImage){
+                body.danceImage = dancetype.danceImage
+            }
+        })
+    }
+
     DanceType.findOneAndUpdate({_id : id, user : req.user._id}, body, {new : true, runValidators : true})
         .then(dancetype=>{
             if(dancetype){

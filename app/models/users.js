@@ -127,7 +127,7 @@ userSchema.methods.generateToken = function(){
 
     user.tokens.push({token})
     user.loginCount = user.loginCount + 1
-    console.log(token)
+    // console.log(token)
     return user.save()
         .then(user => Promise.resolve(token))
         .catch(err => Promise.reject(err))

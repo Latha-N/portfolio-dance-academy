@@ -30,12 +30,12 @@ class BatchList extends React.Component{
             
             
             {
-                this.props.batches.map((ele)=>
+                this.props.batches.map((ele,index)=>
                 <div>
                 <ul>
-                    {ele.batch.map((sub)=>
-                        <span><Link to="/batches/new">{sub.name}</Link></span>
-                        )}
+                    {/* {ele.batch.map((sub)=> */}
+                        <span key={index}><Link to="/batches/new">{ele.name}</Link></span>
+                        {/* )} */}
                 </ul>
                 </div>
                 

@@ -5,11 +5,18 @@ import { startEditDance } from '../../actions/dancetypeAction'
 
 function DanceEdit(props){
     const id=props.match.params.id
-   //console.log("founf id  is",id)
+    // console.log(window.location.href)
+    // if(props.dancetype){
+
+    //     // console.log("founf id  is",props.dancetype.danceImage)
+    // }
     const handleSubmit=(formData)=>{
        //console.log("edit form data",form)
-        const id=props.id
-        const redirect=()=>this.props.history.push('/dancetypes')
+        const id=props.match.params.id
+        const redirect=()=>{
+            props.history.push('/dancetypes')
+            // window.location.href(window.location.host+'/dancetypes')
+        }
         props.dispatch(startEditDance(id,formData,redirect))
     }
    

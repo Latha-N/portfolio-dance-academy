@@ -24,6 +24,8 @@ import BatchList from '../src/components/batches/list'
 // import BatchShow from '../src/components/batches/show'
 import RegisterForm from '../src/components/batches/form'
 
+import Latha from '../src/components/dancetypes/login'
+
 
 
 function App(props){
@@ -46,11 +48,17 @@ function App(props){
                      <a className="navbar-brand" href="/home">Home</a>
                     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div className="navbar-nav" >
-                    <a className="nav-item nav-link active" href="/dancetypes">DanceTypes<span className="sr-only">(current)</span></a>
-                    <a className="nav-item nav-link active" href="/coachers">CoacherDetails<span className="sr-only">(current)</span></a>
+                        <Link to='/dancetypes'>DanceTypes<span className="sr-only">(current)</span></Link>
+                    {/* <a className="nav-item nav-link active" href="/dancetypes">DanceTypes<span className="sr-only">(current)</span></a> */}
+                    <Link to='/coachers'>Coacher<span className="sr-only">(current)</span></Link>
+                    <Link to='/batches'>Batches<span className="sr-only">(current)</span></Link>
+                    <Link to='/logins'>login<span className="sr-only">(current)</span></Link>
+
+                    <Link to='/users/logout' onClick={handleLogout}>Logout<span className="sr-only">(current)</span></Link>
+                    {/* <a className="nav-item nav-link active" href="/coachers">CoacherDetails<span className="sr-only">(current)</span></a>
                     <a className="nav-item nav-link active" href="/batches">Batches<span className="sr-only">(current)</span></a>
 
-                     <a className="nav-item nav-link active text-right" href="/users/logout" onClick={handleLogout}>Logout<span className="sr-only">(current)</span></a>
+                     <a className="nav-item nav-link active text-right" href="/users/logout" onClick={handleLogout}>Logout<span className="sr-only">(current)</span></a> */}
                 </div>
                 </div>
                 </nav>
@@ -102,6 +110,7 @@ function App(props){
 
                 <Route path="/batches" component={BatchList} exact={true}/>
                 <Route path="/batches/new" component={RegisterForm} exact={true}/>
+                <Route path="/logins" component={Latha}/>
                 
                 </Switch>
             </BrowserRouter>

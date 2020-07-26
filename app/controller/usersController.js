@@ -34,7 +34,7 @@ module.exports.login = (req, res) => {
 }
 
 module.exports.account = (req, res) => {
-    console.log('latha',req)
+    // console.log('latha',req)
     res.send(req.user)
 }
 

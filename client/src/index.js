@@ -13,6 +13,7 @@ import { startGetDancetypes } from './actions/dancetypeAction'
 
 
 
+
 const store = configureStore()
 store.subscribe(() => {
 //console.log('latha',store.getState())
@@ -23,13 +24,13 @@ store.subscribe(() => {
 if(localStorage.getItem('authToken')){
     // store.dispatch(startGetCategories())
     // store.dispatch(startGetNotes())
-    axios.get('/users/account',{
+    axios.get('/api/users/account',{
     headers: {
             'x-auth': localStorage.getItem('authToken')
     }
 })
 .then(response=>{
-//console.log('response',response.data)
+// console.log('response',response.data)
     const user = response.data
     store.dispatch(setUser(user))
    store.dispatch(startGetDancetypes())

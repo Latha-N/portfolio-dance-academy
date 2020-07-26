@@ -78,7 +78,7 @@ const editDance=(dance)=>{
 
 export const startEditDance=(id,formData,redirect)=>{
     return (dispatch)=>{
-        axios.put(`/edit/${id}`,formData,{
+        axios.put(`/dancetypes/edit/${id}`,formData,{
             headers:{
                 'x-auth':localStorage.getItem('authToken')
             }
